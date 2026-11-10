@@ -7,3 +7,5 @@ Frontend - Javascript
 Backend - Python - Spotipy, Flask. Plans to introduce SQLlite to collect listening data for some analysis down the line
 
 Spotipy expects a keys.txt file containing spotify client_id, secret and redirect_uri, all of which can be obtained by creating a project in spotify's developer web app (https://developer.spotify.com/) should you want to recreate this work locally.
+
+<img width="846" height="796" alt="image" src="https://github.com/user-attachments/assets/30ab02e5-688c-4efb-8402-ff6cd05e206c" />
