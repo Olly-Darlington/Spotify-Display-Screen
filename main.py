@@ -4,11 +4,12 @@ import threading
 from spotify_client import initialise_spotipy, get_current_track_info
 from image_handelling import update_artwork
 from app import app, set_now_playing
+from listening_log import log_track
+from lastfm_client import get_track_genres
 
 
 # How often to check Spotify, in seconds
 POLL_INTERVAL = 3
-
 
 def run_server():
     app.run(
@@ -74,9 +75,8 @@ def main():
 
                 print("[MAIN] New track detected.")
 
+                # Artwork handeling
                 artwork_url = track_info.get("artwork_url")
-
-                # Update album artwork
                 artwork_success = update_artwork(artwork_url)
 
                 if not artwork_success:
@@ -84,10 +84,25 @@ def main():
                     time.sleep(POLL_INTERVAL)
                     continue
 
-                # Only mark the track as processed after artwork succeeds
+                # Fetch genres from LASTFM
+                genres = get_track_genres(
+                    track_info.get("artist"),
+                    track_info.get("title")
+                )
+                print("[DEBUG] lastfm returned:", genres)
+
+                track_info["genres"] = genres
+                print("[DEBUG] Track dictionary:", track_info.get("genres"))
+
+                # Logs track data
+                log_track(track_info)
+
+                # Mark track as processed
                 last_track_id = track_id
 
-            # 6. Update Flask with the latest Spotify information
+
+
+            # Update Flask with the latest Spotify information
             set_now_playing(track_info)
 
             print(
@@ -99,7 +114,7 @@ def main():
         except Exception as e:
             print(f"[MAIN ERROR] {e}")
 
-        # 7. Wait before checking Spotify again
+        # Wait before checking Spotify again
         time.sleep(POLL_INTERVAL)
 
 
