@@ -2,6 +2,8 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from spotipy.exceptions import SpotifyException
 
+# genre_cache = {}
+
 def initialise_spotipy():
     """Initialise the Spotipy client with the required scope."""
     scope = 'user-read-currently-playing'
@@ -39,6 +41,8 @@ def get_current_track_info(sp):
             artists = item.get('artists', [])
             artist_name = artists[0]['name'] if artists else "Unknown Artist"
 
+
+  
             # Build track dictionary
             track_dict = {
                 "track_id": item.get('id'),
@@ -48,7 +52,7 @@ def get_current_track_info(sp):
                 "artwork_url": artwork_url,
                 "is_playing": current_track.get('is_playing'),
                 "progress_ms": current_track.get('progress_ms'),
-                "duration_ms": item.get('duration_ms')
+                "duration_ms": item.get('duration_ms'),
             }
 
             # Return dictionary to main.py

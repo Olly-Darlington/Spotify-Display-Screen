@@ -4,11 +4,11 @@ import threading
 from spotify_client import initialise_spotipy, get_current_track_info
 from image_handelling import update_artwork
 from app import app, set_now_playing
+from listening_log import log_track
 
 
 # How often to check Spotify, in seconds
 POLL_INTERVAL = 3
-
 
 def run_server():
     app.run(
@@ -75,6 +75,8 @@ def main():
                 print("[MAIN] New track detected.")
 
                 artwork_url = track_info.get("artwork_url")
+
+                log_track(track_info)
 
                 # Update album artwork
                 artwork_success = update_artwork(artwork_url)
