@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #FFFFFF;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    min-height: 100vh;
+}
+
+.player {
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+#album-artwork {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#track-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+#track-artist {
+    display:inline-block;
+    font-size: 15px;
+    color: #B3B3B3;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+#track-artist::after {
+    content: " -"; /* Adds the hyphen with spaces around it */
+    white-space: pre;
+}
+
+
+#track-album {
+    display:inline-block;
+    font-size: 15px;
+    color: #B3B3B3;
+    font-weight: normal
+}
+
+.progress-container {
+    margin-top: 20px;
+}
+
+.progress-background {
+    width: 100%;
+    height: 5px;
+    background-color: #444;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    height: 20px;
+    width: 0%; 
+    background-color: #1DB954;
+    transition: width 3s linear;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Display</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+</head>
+
+
+<body>
+    <main class="player">
+
+        <img id="track-artwork" src="" alt="Album Artwork">
+
+        <section class="track-information">
+
+            <h1 id="track-title">Waiting for Spotify...</h1>
+
+            <h2 id="track-artist">Artist</h2>
+
+            <p id="track-album">Album</p>
+
+        </section>
+
+        <section class="progress-background">
+            <div id="progress-bar"></div>
+
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
