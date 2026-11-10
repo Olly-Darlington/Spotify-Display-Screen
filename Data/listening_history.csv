@@ -1,3 +1,2 @@
-track_id,title,artist,album,duration_ms,started_at
-4IU1RL4BKvFyXtbTwaHAvW,Ventura Highway,America,Homecoming,211680,2026-11-10T12:46:14.681102+00:00
-5e9TFTbltYBg2xThimr0rU,The Chain - 2004 Remaster,Fleetwood Mac,Rumours (Super Deluxe),270213,2026-11-10T12:46:49.762289+00:00
+track_id,title,artist,album,genres,duration_ms,started_at
+64BbK9SFKH2jk86U3dGj2P,Otherside,Red Hot Chili Peppers,Californication (Deluxe Edition),rock; alternative rock; alternative; Red Hot Chili Peppers; funk; Funk Rock; 90s; american; rhcp; California,255373,2026-11-10T14:49:23.658664+00:00
