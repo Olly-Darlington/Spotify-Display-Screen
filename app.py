@@ -38,7 +38,6 @@ def now_playing():
 
     return jsonify(track_data)
 
-
 # Artwork
 @app.route('/api/artwork', methods=['GET'])
 def get_artwork():
@@ -58,6 +57,31 @@ def get_artwork():
     )
 
 
+# Vinyl image
+@app.route('/api/vinyl', methods=['GET'])
+def get_vinyl_artwork():
+
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    vinyl_path = os.path.join(
+        base_dir, "data", "current_vinyl.png"
+    )
+
+    if not os.path.exists(vinyl_path):
+        return jsonify({
+            "error": "Vinyl artwork file not found"
+        }), 404
+
+    response = send_file(
+        vinyl_path,
+        mimetype='image/png'
+    )
+
+    response.headers["Cache-Control"] = "no-store"
+
+    return response
+
+
+# Display output
 @app.route('/')
 def home():
     return render_template('index.html')

@@ -21,8 +21,8 @@ def log_track(track_info):
         "started_at": datetime.now(timezone.utc).isoformat()
     }
 
-    print("[DEBUG] Genres being written:", record["genres"])
-    
+    # print("[DEBUG] Genres being written:", record["genres"])
+
     df = pd.DataFrame([record])
 
     os.makedirs(os.path.dirname(CSV_path), exist_ok=True)
